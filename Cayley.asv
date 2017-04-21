@@ -24,26 +24,26 @@ if isequal(size(in),[1, 1])
     return
 end
 
-%% in the case : in is the incidence matrix
+%% if in is the incidence matrix
 % at this level, we need to check the structure of the graph i.e. check if
 % the graph is complete.
 % n is the number of vertices
-n = size(in,1);
+n = size(in,1); 
 % the number of edges in a complete graph with n vertices is given by the
 % formula edges = n * (n - 1) / 2
 edges = n * (n - 1) / 2;
 % first check if the graph has the correct number of edges
-if ~isequal(size(in,2), edges)
-    error('MatrixTreeTheorem.Cayley::The Graph do not have the correct number of edges')
-end
+% if ~isequal(size(in,2), edges)
+%     error('MatrixTreeTheorem.Cayley::The Graph do not have the correct number of edges')
+% end
 % now we need to check that D = (n-1)*I. Where:
 % D is the degree matrix relative to the graph
 % I is the identity matrix
 I = eye( n );
-D = MatrixTreeTheorem.inc2deg( in );
+D = MatrixTreeTheorem.inc2deg( in )
 if ~isequal(D, (n - 1) * I)
     error('MatrixTreeTheorem.Cayley::The Graph is not a complete graph')
 end
-%% Compute the number of spanning trees
 K = n ^ (n - 2);
 end
+
